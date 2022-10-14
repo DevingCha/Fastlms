@@ -1,5 +1,6 @@
 package com.zerobase.fastlms.admin.entity;
 
+import com.zerobase.fastlms.admin.dto.UpdateBannerDto;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -29,13 +30,21 @@ public class Banner {
     @Enumerated(EnumType.STRING)
     BannerOpenType bannerOpenType;
 
-    int orderBy;
+    int orderVal;
 
-    boolean release;
+    boolean visible;
 
     @CreatedDate
     LocalDateTime createdAt;
 
     @LastModifiedDate
     LocalDateTime updatedAt;
+
+    public void update(UpdateBannerDto updateBannerDto) {
+        name = updateBannerDto.getName();
+        linkUrl = updateBannerDto.getLinkUrl();
+        bannerOpenType = BannerOpenType.valueOf(updateBannerDto.getBannerOpenType());
+        orderVal = updateBannerDto.getOrderVal();
+        visible = updateBannerDto.isVisible();
+    }
 }

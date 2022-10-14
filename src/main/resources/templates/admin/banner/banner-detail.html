@@ -52,15 +52,15 @@
             <tr>
                 <th>배너명</th>
                 <td>
-                    <input th:value="${detail.name}" type="text" name="name" required placeholder="배너명 입력" />
+                    <input th:value="${detail.name}" type="text" name="name" th:required="${!detail.isEditMode()}" placeholder="배너명 입력" />
                 </td>
             </tr>
             <tr>
                 <th>배너 파일</th>
                 <td>
-                    <input type="file" name="imgFile" required />
+                    <input type="file" name="imgFile" th:required="${!detail.isEditMode()}" />
                     <div th:if="${not #strings.isEmpty(detail.imgUrl)}">
-                        <img th:src="${detail.imgUrl}" style="width: 100px;"/>
+                        <img th:src="@{${'/images/banner/' + detail.imgUrl}}" style="width: 100px;"/>
                     </div>
                 </td>
             </tr>
@@ -68,7 +68,7 @@
             <tr>
                 <th>링크 주소</th>
                 <td>
-                    <input th:value="${detail.linkUrl}" type="text" name="linkUrl" required placeholder="링크 주소 입력" />
+                    <input th:value="${detail.linkUrl}" type="text" name="linkUrl" th:required="${!detail.isEditMode()}" placeholder="링크 주소 입력" />
                 </td>
             </tr>
             <tr>
@@ -86,7 +86,7 @@
                     정렬 순서
                 </th>
                 <td>
-                    <input th:value="${detail.orderBy}" type="text" name="orderBy" required placeholder="정렬 순서 입력" />
+                    <input th:value="${detail.orderVal}" type="text" name="orderVal" th:required="${!detail.isEditMode()}" placeholder="정렬 순서 입력" />
                 </td>
             </tr>
 
@@ -95,7 +95,7 @@
                     공개 여부
                 </th>
                 <td>
-                    <input th:checked="${detail.release}" type="checkbox" id="checkbox1" name="release" value="true" /><label for="checkbox1">공개</label>
+                    <input th:checked="${detail.visible}" type="checkbox" id="checkbox1" name="visible" value="true" /><label for="checkbox1">공개</label>
                 </td>
             </tr>
             </tbody>

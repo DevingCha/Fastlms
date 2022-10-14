@@ -12,7 +12,7 @@ public class AddBannerDto {
     String imgUrl;
     String linkUrl;
     String bannerOpenType;
-    int orderBy;
-    boolean release;
+    int orderVal;
+    boolean visible;
     boolean editMode;
 }

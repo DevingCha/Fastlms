@@ -34,11 +34,7 @@ public class MemberController {
     }
 
     @PostMapping("/member/login")
-    public String login() {
-        System.out.println("Login 시도중");
-        System.out.println("Hello World!!!!!!!");
-
-        return "redirect:/";
+    public void login() {
     }
     
     @GetMapping("/member/find-password")

@@ -8,9 +8,30 @@
     <h1>메인 페이지 </h1>
     <div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
 
-    <div>
-        <img src="/files/2021/09/05/6e5170576b0c4c29879e5334dfccab2d.png"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <!-- 아래 부분의 배너이미지가 관리자에서 등록된 데이터로 교체되면 됩니다. -->
+    <div class="home__slider">
+        <div class="bxslider">
+            <div th:each="banner : ${bannerList}">
+                <a th:href="${banner.linkUrl}" th:target="${banner.bannerOpenType}">
+                    <img th:src="@{${'/images/banner/' + banner.imgUrl}}" alt="banner">
+                </a>
+            </div>
+        </div>
     </div>
 
 </body>
+<script>
+    $(function(){
+        $('.bxslider').bxSlider({
+            mode: 'fade',
+            captions: true,
+            slideWidth: 800,
+            touchEnabled: false
+        });
+    });
+</script>
 </html>
