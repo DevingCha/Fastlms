@@ -158,7 +158,7 @@ public class MemberServiceImpl implements MemberService {
         
         Member member = optionalMember.get();
         MemberDto memberDto = MemberDto.of(member);
-        loginHistoryRepository.findTop5ByUserId(member.getUserId())
+        loginHistoryRepository.findTop5ByUserIdOrderByLoginDtDesc(member.getUserId())
                 .ifPresent(memberDto::setLoginHistoryList);
         return memberDto;
     }

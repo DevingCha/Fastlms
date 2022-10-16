@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface LoginHistoryRepository extends JpaRepository<LoginHistory, String> {
-    Optional<List<LoginHistory>> findTop5ByUserId(String userId);
+    Optional<List<LoginHistory>> findTop5ByUserIdOrderByLoginDtDesc(String userId);
 }
